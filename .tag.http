@@ -1,0 +1,42 @@
+@uri=http://localhost:4000/api/v1
+@access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDcyNTM4MDgsImV4cCI6MTcwNzI2NDYwOCwiYXVkIjoiNjVjMTdmYTdiODkxNmEyYjU4NDIxYWMzIiwiaXNzIjoiIn0.BxWWiWGW8WJYKpbsmIu4LauK30ztj0V5WI4sAWTTKHI
+@tagId=65c1936e143fdb3fd9b762f0
+### 新增 Tag
+post {{uri}}/tag
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+    # "icon": "123",
+    "name": "Vue"
+}
+
+### 修改Tag
+patch {{uri}}/tag/{{tagId}}
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+    "name": "1234",
+    "icon": "1111"
+}
+### tag详情
+get {{uri}}/tag/{{tagId}}
+Authorization: Bearer {{access_token}}
+
+### 删除tag
+delete {{uri}}/tag/{{tagId}}
+Authorization: Bearer {{access_token}}
+
+### tag列表
+
+post {{uri}}/tag/list
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+    "page": 1,
+    "pageSize": 10,
+    "sortByCreateAt": "desc",
+    "query": "4"
+}

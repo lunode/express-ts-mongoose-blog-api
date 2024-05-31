@@ -1,0 +1,41 @@
+@uri=http://localhost:4000/api/v1
+@access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDczMTc3MTQsImV4cCI6MTcwNzMxOTUxNCwiYXVkIjoiNjVjMmVkZWY2ZmFmMjIzN2ZkNDgxZDkyIiwiaXNzIjoiIn0.CrGmxEBWc8yEte75HMg-ltzk39yRGTOjGaZPAdQsrhU
+@postId=65c2bb4d4f38fb3756c370a7
+@commentId=65c2f5f2584d780b8b5fa0a3
+### 添加评论
+post {{uri}}/comment
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+   "parentCommentId": "65c384650114ebc4599d93ce",
+   "content": "我是子评论33333",
+   "postId": "65c2bb4d4f38fb3756c370a7"
+}
+### 删除评论
+delete {{uri}}/comment/{{commentId}}
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+### 评论列表
+post {{uri}}/comment/list
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+    "query": "3g",
+    "page": 1,
+    "pageSize": 10,
+    "sortByCreateAt": "desc"
+}
+### 博文评论
+post {{uri}}/comment/{{postId}}/comments
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+    # "query": "3g",
+    "page": 1,
+    "pageSize": 10,
+    "sortByCreateAt": "desc"
+}

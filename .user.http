@@ -1,0 +1,60 @@
+@uri=http://localhost:4000/api/v1
+@access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTY4NjMzNzIsImV4cCI6MTcxNjg2NTE3MiwiYXVkIjoiNjVjMmVkZWY2ZmFmMjIzN2ZkNDgxZDkyIiwiaXNzIjoiIn0.Sqvk20GotKw_2hbJWJLBVov1wGlhBuArHNeyRvrkTwM
+@postId=65c2bb4d4f38fb3756c370a7
+@refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTY4NjM0NTMsImV4cCI6MTcxOTQ1NTQ1MywiYXVkIjoiNjVjMmVkZWY2ZmFmMjIzN2ZkNDgxZDkyIiwiaXNzIjoiIn0.GUFM6zh3uXFkWpcReUctRZpA3wzoYmxI6Mi7jtC5hDs
+@commentId=
+### 权限接口
+get {{uri}}/user
+Authorization: Bearer {{access_token}}
+### 用户注册
+post {{uri}}/user/register
+Content-Type: application/json
+
+{
+   "email": "12345@qq.com",
+   "password": "12345"
+
+}
+### 用户登录
+post {{uri}}/user/login
+Content-Type: application/json
+
+{
+    "email": "12345@qq.com",
+    "password": "12345"
+}
+### 退出登录
+post {{uri}}/user/signout
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+### 注销用户
+post {{uri}}/user/logout
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+### 更新用户
+post {{uri}}/user/updateuserinfo
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+    "name": "12345",
+    "password": "12345"
+}
+### 用户列表
+post {{uri}}/user/list
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+    # "query": "33",
+    "page": 1,
+    "pageSize": 10,
+    "sortByCreateAt": "desc"
+}
+### 刷新token
+post {{uri}}/user/refresh_token
+Content-Type: application/json
+
+{
+    "refreshToken": "{{refreshToken}}"
+}

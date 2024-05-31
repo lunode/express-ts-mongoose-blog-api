@@ -1,0 +1,18 @@
+# redis-image默认无配置文件启动, 无法从容器内部拷贝默认配置文件出来
+# config: https: //redis.io/docs/management/config/
+# docker run -d --name redis -p 6379: 6379 redis: 6-alpine
+# docker cp redis:/etc/redis.conf ~/redis/redis.conf
+# docker run -d -v ~/redis/redis.conf:/etc/redis.conf
+# --name redis redis: 3-alpine redis-server /etc/redis.conf
+version: "3"
+services:
+  redis:
+    image: 'redis:6-alpine'
+    container_name: 'redis'
+    ports:
+      - '6379:6379'
+    volumes:
+      - ~/redis/data:/data
+      - ~/redis/redis.conf:/etc/redis.conf
+    command: [ "redis-server", "/etc/redis.conf" ]
+    restart: always

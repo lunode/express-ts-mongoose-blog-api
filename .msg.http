@@ -1,0 +1,31 @@
+@uri=http://localhost:4000/api/v1
+@access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDcyNTI3MjQsImV4cCI6MTcwNzI1NDUyNCwiYXVkIjoiNjVjMTdmYTdiODkxNmEyYjU4NDIxYWMzIiwiaXNzIjoiIn0.SAS7e4fS6O6sA7MgOKfzc_BymND4it-BC2lujDm0NZg
+@messageId=65c28c0d95ba01d50a6cb0b1
+### 发送留言
+post {{uri}}/message
+Content-Type: application/json
+Authorization:Bearer {{access_token}}
+
+{
+    "message": "你好, 我是大学生, 想白嫖, 回复我邮箱: 123@qq.com"
+}
+
+### 留言详情
+get {{uri}}/message/{{messageId}}
+Authorization:Bearer {{access_token}}
+
+### 留言列表
+post {{uri}}/message/list
+Content-Type: application/json
+Authorization:Bearer {{access_token}}
+
+{
+    # "query": "大学生",
+    "page": 1,
+    "pageSize": 10,
+    "sortByCreateAt": "desc"
+}
+
+### 留言删除
+delete {{uri}}/message/{{messageId}}
+Authorization:Bearer {{access_token}}

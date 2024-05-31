@@ -1,0 +1,54 @@
+@uri=http://localhost:4000/api/v1
+@access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDcyNTk0NzAsImV4cCI6MTcwNzI2MTI3MCwiYXVkIjoiNjVjMTdmYTdiODkxNmEyYjU4NDIxYWMzIiwiaXNzIjoiIn0.XkcZ-c3XkwaAG5WYNcsUZxQ1yBBjgGRN5V4deD0R_6o
+@postId=65c2bb4d4f38fb3756c370a7
+### 新增post
+post {{uri}}/post
+Content-Type: application/json
+Authorization:Bearer {{access_token}}
+
+{
+    "tagList":["65c2a12c5f4d7d3b11dee20e", "65c2a15e5f4d7d3b11dee220"],
+    "title": "这是title",
+    "content": "这是博文内容"
+}
+### 更新post
+patch {{uri}}/post/{{postId}}
+Content-Type: application/json
+Authorization:Bearer {{access_token}}
+
+{
+    "title": "这是title",
+    "content": "这是博文内容_update"
+}
+
+### post详情
+get {{uri}}/post/{{postId}}
+Authorization:Bearer {{access_token}}
+
+### post公共列表
+post {{uri}}/post/list?tag=65c2a15e5f4d7d3b11dee220
+Content-Type: application/json
+Authorization:Bearer {{access_token}}
+
+{
+    "query": "title",
+    "page": 1,
+    "pageSize": 10,
+    "sortByCreateAt": "desc"
+}
+### post管理员列表
+post {{uri}}/post/admin/list
+Content-Type: application/json
+Authorization:Bearer {{access_token}}
+
+{
+    # "query": "大学生",
+    "page": 1,
+    "pageSize": 10,
+    "sortByCreateAt": "desc"
+}
+
+
+### 删除post
+delete {{uri}}/post/{{postId}}
+Authorization:Bearer {{access_token}}

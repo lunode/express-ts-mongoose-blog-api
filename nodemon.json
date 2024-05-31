@@ -1,0 +1,13 @@
+{
+  "watch": [
+    "**/*.ts"
+  ],
+  "ignore": [
+    "node_modules",
+    "package*.json",
+    "nodemon.json"
+  ],
+  "exec": "ts-node dev.ts",
+  "ext": ".ts",
+  "exitcrash": false
+}

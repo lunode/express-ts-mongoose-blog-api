@@ -1,0 +1,46 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/",
+            "name": "DEBUG CONSOLE",
+            "runtimeExecutable": "nodemon",
+            "runtimeArgs": [
+                // "--inpsect",
+                "--config",
+                "nodemon.json",
+                "--delay",
+                "6"
+            ],
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/",
+            "name": "TERMINAL",
+            "runtimeExecutable": "nodemon",
+            "runtimeArgs": [
+                // "--inpsect",
+                "--config",
+                "nodemon.json",
+                "--delay",
+                "6"
+            ],
+            // 将debug 的控制台 转到 terminal
+            // 类似morgan这种将内容输入到stdout标准输出流的内容才会显示在终端
+            // 不然DEBUG CONSOLE不会打印morgan日志, 如需使用DEBUG CONSOLE, 注释下行
+            "console": "integratedTerminal",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+        },
+    ]
+}

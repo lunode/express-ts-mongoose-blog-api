@@ -1,0 +1,43 @@
+@uri=http://localhost:4000/api/v1
+@access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDcyNDc0NTUsImV4cCI6MTcwNzI0OTI1NSwiYXVkIjoiNjVjMTdmYTdiODkxNmEyYjU4NDIxYWMzIiwiaXNzIjoiIn0.QlbbTH4KOs8qLgu8lPuAXryL4qot42XR3rlwy0raEsQ
+@linkId=65c2501c58d1b3b2c986b43e
+### 新增 link
+post {{uri}}/link
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+    "title": "3333",
+    "url": "123333"
+}
+
+### 修改 link
+patch {{uri}}/link/{{linkId}}
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+    "title": "1234",
+    "url": "123",
+    "icon": "1111"
+}
+### 详情link
+get {{uri}}/link/{{linkId}}
+Authorization: Bearer {{access_token}}
+
+### 删除link
+delete {{uri}}/link/{{linkId}}
+Authorization: Bearer {{access_token}}
+
+### link列表
+
+post {{uri}}/link/list
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+{
+    # "query": "33",
+    "page": 1,
+    "pageSize": 10,
+    "sortByCreateAt": "desc"
+}
