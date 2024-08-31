@@ -7,7 +7,7 @@
     "package*.json",
     "nodemon.json"
   ],
-  "exec": "ts-node dev.ts",
+  "exec": "tsx dev.ts",
   "ext": ".ts",
   "exitcrash": false
 }

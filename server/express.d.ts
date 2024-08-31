@@ -1,4 +1,4 @@
-import { JwtPayload } from "jsonwebtoken";
+import type { JwtPayload } from "jsonwebtoken";
 import { Request } from "express";
 export interface AuthRequest extends Request {
   payload?: JwtPayload;

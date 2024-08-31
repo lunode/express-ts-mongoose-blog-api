@@ -1,12 +1,11 @@
 // 线上生产使用这个文件
 import express, { urlencoded, json } from "express";
 import http from "http";
-import errorHandle from "./middleware/errorHandle";
-import morgan from "morgan";
 import config from "./config/config";
-console.log(config);
 import connectMongo from "./database/mongodb";
-import cors from "./middleware/cors";
+import corsMiddleware from "./middleware/cors";
+import { morganMiddleware } from "./middleware/log";
+import errorHandle from "./middleware/errorHandle";
 import routeNotMath from "./middleware/routeNotMatch";
 import router from "./router/router";
 
@@ -14,23 +13,8 @@ const app = express();
 app.disable("x-powered-by");
 app.set("trust proxy", true);
 // 日志中间件
-app.use(
-  morgan(function (tokens, req, res) {
-    return [
-      `[${req.ip}]`,
-      new Date().toLocaleString("zh"),
-      tokens.method(req, res),
-      tokens.url(req, res),
-      tokens.status(req, res),
-      tokens["response-time"](req, res),
-      "ms",
-      "-",
-      tokens.res(req, res, "content-length"),
-      tokens.req(req, res, "user-agent"),
-    ].join(" ");
-  })
-);
-app.use(cors());
+app.use(morganMiddleware());
+app.use(corsMiddleware());
 app.use(urlencoded({ extended: true }));
 app.use(json());
 // 注册路由
@@ -53,7 +37,10 @@ function runServer(port = config.port) {
   return server;
 }
 // 不能是其他文件导入
-if (!module.parent) {
+// if (!module.parent) {
+//   runServer(config.port);
+// }
+if (import.meta.url === process.argv[1]) {
   runServer(config.port);
 }
 export default runServer;

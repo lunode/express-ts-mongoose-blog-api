@@ -1,4 +1,5 @@
-import jwt, { JwtPayload, TokenExpiredError } from "jsonwebtoken";
+import type { JwtPayload } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import config from "../config/config";
 import { setRToken2redis, setAToken2redis } from "../database/redis";
 import HttpErrors from "http-errors";
@@ -83,7 +84,7 @@ const verifyRefreshToken = (token: string): JwtPayload => {
       issuer: "",
     }) as JwtPayload;
   } catch (err) {
-    if (err instanceof TokenExpiredError) {
+    if (err instanceof jwt.TokenExpiredError) {
       throw UnAuthError.tokenExpired();
     }
     // 其他类型的 token校验 error

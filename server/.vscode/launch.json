@@ -7,7 +7,7 @@
         {
             "type": "node",
             "request": "launch",
-            "cwd": "${workspaceFolder}/server/",
+            "cwd": "${workspaceFolder}/",
             "name": "DEBUG CONSOLE",
             "runtimeExecutable": "nodemon",
             "runtimeArgs": [
@@ -24,7 +24,7 @@
         {
             "type": "node",
             "request": "launch",
-            "cwd": "${workspaceFolder}/server",
+            "cwd": "${workspaceFolder}/",
             "name": "TERMINAL",
             "runtimeExecutable": "nodemon",
             "runtimeArgs": [

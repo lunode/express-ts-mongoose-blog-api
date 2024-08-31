@@ -11,9 +11,10 @@
   ],
   "scripts": {
     "dev": "nodemon --config nodemon.json --delay 6",
-    "build": "tsc --build",
+    "build": "tsx --build",
     "serve": "npm run build && node dist/app.js"
   },
+  "type": "module",
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -38,6 +39,7 @@
     "eslint": "^8.56.0",
     "nodemon": "^3.1.4",
     "ts-node": "^10.9.2",
+    "tsx": "^4.19.0",
     "typescript": "^5.3.3"
   }
 }

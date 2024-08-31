@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import { MongooseError } from "mongoose";
-import config from "../config/config";
+import jwt from "jsonwebtoken";
 import { isHttpError } from "http-errors";
-import { TokenExpiredError } from "jsonwebtoken";
+import config from "../config/config";
 import { UnAuthError } from "../error";
 export default function (
   err: any,
@@ -34,7 +34,7 @@ export default function (
     status = err.status || err.statusCode;
     message = err.message;
   }
-  if (err instanceof TokenExpiredError) {
+  if (err instanceof jwt.TokenExpiredError) {
     status = 401;
     message = err.message;
   }
